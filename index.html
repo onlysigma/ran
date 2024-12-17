@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Responsive Fix</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(27, 11, 51, 0.6);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* Full-Screen Background */
+        .image {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            background-image: url(https://preview.colorlib.com/theme/rango/images/slider_background.jpg.webp);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        /* Right Vertical Div */
+        .right-div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 30px;
+            width: 240px;
+            height: 130%;
+            background-color: rgba(49, 22, 90, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-align: center;
+            color: white;
+            padding: 10px;
+        }
+
+        .right-div span {
+            color: #6610f2;
+            font-size: 25px;
+            font-weight: 400;
+        }
+
+        .nav-link:hover {
+    color: #ffc107 !important; 
+    transition: color 0.5s ease; }
+        
+        .content1 h5 {
+            font-size: 2rem;
+        }
+
+        .content1 h3 {
+            font-size: 2.5rem;
+            margin-top: 1rem;
+        }
+
+        .content1 h1 {
+            font-size: 10rem;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .content1 h2 {
+            font-size: 1.5rem;
+        }
+
+
+        /* Card Section */
+        .card-parent {
+            margin-top: 2rem;
+            width: 18vw;
+            height: 60vh;
+            padding: rem rem;
+            /* background-color: #f8f9fa; */
+        }
+
+        .card-parent h2 {
+            padding-top: 2rem;
+            font-size: 2.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-parent button {
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem;
+        }
+
+        /* Parent Flex Container */
+        .cards-container {
+            display: flex;
+            /* Enable Flexbox */
+            align-items: flex-start;
+            /* Align content at the top */
+            justify-content: space-between;
+            /* Space between the two sides */
+            gap: 2rem;
+            /* Add spacing between the two sections */
+            padding: 2rem;
+            /* Add padding around the container */
+        }
+
+        /* Left Side: card-parent */
+        .card-parent {
+            flex: 1;
+            width: 10vw;
+            /* Take up 1 part of the available space */
+            text-align: left;
+            /* Align text to the left */
+
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        /* Right Side: card-papa */
+        .card-papa {
+            margin-top: 3rem;
+            flex: 2;
+            /* Take up 2 parts of the available space */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* 2 cards in a row */
+            gap: 1.5rem;
+            /* Add spacing between cards */
+        }
+
+        /* Individual Cards */
+        .card-papa>div {
+
+            padding: 1.5rem;
+            border-radius: 00px;
+            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .card-papa>div:hover {
+            transform: scale(1.05);
+            /* Add a hover zoom effect */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .parent-slider {
+            margin-top: 7rem;
+            display: flex;
+            justify-content: space-around;
+            height: 100vh;
+        }
+
+        .slider-image {
+            /* border: 1px solid black; */
+            width: 60vw;
+            height: 80vh;
+            box-shadow: 16px 20px 25px rgba(0, 0, 0, 0.3);
+            background-image: url(https://preview.colorlib.com/theme/rango/images/v_slider_section.jpg.webp);
+        }
+
+        .slider {
+            width: 25vw;
+
+        }
+
+        .slider h2 {
+            font-size: 3rem;
+        }
+
+        .slider img {
+            border-radius: 50%;
+            width: 5vw;
+            height: 10vh;
+            margin-top: 1rem;
+        }
+
+        .slider span {
+            text-align: center;
+            margin-left: 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Flexbox Cards Container */
+        .cards1-container {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Card Styles */
+        .custom-card {
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            padding: 2rem 1.5rem;
+            width: 250px;
+            max-width: 100%;
+            height: 50vh;
+        }
+
+        .custom-card.active-card {
+            background-color: #472e74;
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-card h4 {
+            font-size: 1.2rem;
+            padding-top: 3.5rem;
+        }
+
+        .custom-card p {
+            font-size: 0.9rem;
+            padding-top: 1rem;
+        }
+
+        /* Pagination Dots */
+        .pagination-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #472e74;
+        }
+
+        .container-m1 {
+            margin-top: 4rem;
+
+            flex-wrap: wrap;
+            justify-content: space-around;
+            display: flex;
+            height: 80vh;
+        }
+
+        .m1 {
+            width: 27vw;
+        }
+
+        .m4 {
+            position: relative;
+            left: 0.8rem;
+            bottom: 11rem;
+            width: 27vw;
+
+        }
+
+        .m3 {
+            position: relative;
+            right: 0.8rem;
+            bottom: 11rem;
+            width: 27vw;
+            width: 27vw;
+        }
+
+        .m1-content {
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        .bt7 {
+            background-color: white;
+            border: 1px solid black;
+        }
+        .bt7:hover{
+            background-color: #ddd;
+            
+        }
+
+        .img9 {
+            margin-top: 6rem;
+            height: 50vh;
+            width: 40rem;
+        }
+
+        .container-ctd {
+margin-top: 2rem;
+            background-color: rgb(170, 255, 227);
+            display: flex;
+            justify-content: space-between;
+            height: 65vh;
+        }
+
+        .ctdcontent {
+            font-weight: bold;
+            color: rgb(130, 125, 173);
+            width: 50%;
+            padding: 7rem;
+        }
+        .botttle-content{
+            width: 50vw;
+        }
+        .botttle-content h2{
+            padding-top: 3rem;
+            font-size: 2.5rem;
+        }
+        .bt9:hover{
+            background-color: aqua;
+        }
+        .container-bottle{
+            height: 60vh;
+            margin-top: 8rem;
+            display: flex;
+            justify-content: center;
+            gap: 9rem;
+        }
+        .container-subscribe{
+            color: white;
+            height: 60vh;
+            background-color: #1a0036;
+        }
+        .container-subscribe h1{
+            padding-top: 5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .container-subscribe p{
+            text-align: center;
+        }
+    .container-subscribe input  {
+        width: 45rem;
+        height: 2.5rem;
+        background-color: #452b78;
+        margin-top: 5.2rem;
+        margin-left: 14rem;
+        border: n;
+    }
+    .container-subscribe button{
+        text-transform: uppercase;
+        font-size: 13px;
+        margin-left: 2rem;
+        font-weight: bold;
+        background-color: #1a0036;
+        border: 1px solid white;
+        color: white;
+        padding: 0.6rem;
+        padding-right: 1.3rem;
+        padding-left: 1.3rem;
+    }
+    .container-subscribe button:hover{
+        background-color: #6610f2;
+    }
+    .ran{
+        width: 30rem;
+        text-decoration: none;
+    }
+    .ran p{
+        font-size: 1.2rem;
+    }
+    footer{
+        display: flex;
+        justify-content: space-around;
+        
+        background-color: #d9eff8;
+    }
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+               
+            }
+
+            .card-papa {
+                grid-template-columns: 1fr;
+               
+            }
+        }
+      
+        @media (max-width: 768px) {
+            .right-div {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .custom-card {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .content1 h1 {
+                font-size: 4rem;
+            }
+
+            .content1 h3 {
+                font-size: 2rem;
+            }
+
+            .content1 h5,
+            .content1 h2 {
+                font-size: 1.2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .m1, .m3, .m4 {
+                width: 40vw; /* Adjust width for medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container-m1 {
+               display: flex;
+               flex-wrap: wrap;
+                align-items: center;
+            }
+
+            .m1, .m3, .m4 {
+                width: 80vw; /* Adjust width for tablets */
+            }
+
+            .img9 {
+                width: 50vw;
+                margin-top: 10rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .m1, .m3, .m4 {
+                width: 50vw; /* Full width for small screens */
+                margin-bottom: 1.5rem;
+            }
+
+            .bt7 {
+                width: 100%;
+            }
+
+            .img9 {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Image Section -->
+    <div class="image">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-1 text-white fw-light" href="#">
+                    Ran <span class="text-warning fw-bold">Go</span>
+                </a>
+                <button class="navbar-toggler text-warning bg-white" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Services</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+                    </ul>
+                    <i class="fa-solid fa-magnifying-glass text-white fs-4 me-5"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Right Div -->
+        <div class="right-div" >
+            <p>
+                <span>Modern design easy to use</span><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem adipisci deserunt.
+            </p>
+        </div>
+
+        <!-- Center Content -->
+        <div class="content1" data-aos="fade-down-right">
+            <h5>By</h5>
+            <h3>Colorlib</h3>
+            <h1>Go!</h1>
+            <h2>Get Your Freebie Template Now</h2>
+        </div>
+    </div>
+
+    <!-- Flex Container -->
+    <div class="cards-container">
+        <!-- Left Side (card-parent) -->
+        <div class="card-parent " data-aos="zoom-in">
+            <h2>Build your entire website in minutes</h2>
+            <button type="button" class="btn btn-outline-secondary mt-5">Discover Now</button>
+        </div>
+
+        <!-- Right Side (card-papa) -->
+        <div class="card-papa"data-aos="zoom-in-up">
+            <div class="card2">
+                <h3>Great team</h3>
+                <p>Etiam euismod sapien nec est tempus consequat. Nullam eget pretium mi. Curabitur rhoncus finibus quam
+                    quis sodales.</p>
+            </div>
+            <div class="card3">
+                <h3>Online Marketing</h3>
+                <p>Etiam euismod sapien nec est tempus consequat. Nullam eget pretium mi. Curabitur rhoncus finibus quam
+                    quis sodales.</p>
+            </div>
+            <div class="card4">
+                <h3>Modern Design</h3>
+                <p>Etiam euismod sapien nec est tempus consequat. Nullam eget pretium mi. Curabitur rhoncus finibus quam
+                    quis sodales.</p>
+            </div>
+            <div class="card5">
+                <h3>Easy to use</h3>
+                <p>Etiam euismod sapien nec est tempus consequat. Nullam eget pretium mi. Curabitur rhoncus finibus quam
+                    quis sodales.</p>
+            </div>
+        </div>
+    </div>
+    <div class="parent-slider">
+        <div class="slider-image"data-aos="zoom-out-up">
+
+        </div>
+        <div class="slider"data-aos="zoom-out-down">
+            <h2>Fast Support to Our client.Just Give Us A Shout</h2>
+            <p>Etiam euismod sapien nec est tempus consequat. Nullam eget pretium mi. Curabitur rhoncus finibus quam
+                quis sodales.</p>
+            <img src="data:image/jpeg;base64,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"
+                alt="">
+            <span>Muhammad Hasnain</span>
+
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="section-title">RanGO. We take care of your business</h2>
+        <p class="section-subtitle">Explore our services</p>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="cards1-container" data-aos="fade-up">
+        <!-- Card 1 -->
+        <div class="custom-card">
+            <h4>Amazing Service</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <!-- Card 2 - Active Center Card -->
+        <div class="custom-card active-card">
+            <h4>Amazing Service</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus lorem ac.</p>
+            <button class="btn btn-light fw-bold">DISCOVER MORE</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="custom-card">
+            <h4>Management</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="custom-card">
+            <h4>Risk Evaluation</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </div>
+
+    <!-- Pagination Dots -->
+    <div class="pagination-dots">
+        <div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <div class="m1-content">
+
+        <h1>Modern features</h1>
+    </div>
+    <div class="container-m1">
+        <div class="m1" >
+            <h2>Responsive</h2>
+            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pel lentesque sit am et tellus.</p>
+        </div>
+        <div class="m2-image"data-aos="flip-right">
+            <img src="https://preview.colorlib.com/theme/rango/images/features.png.webp" alt="">
+
+        </div>
+        <div class="m1" >
+            <h2>Clean code</h2>
+            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pel lentesque sit am et tellus.</p>
+        </div>
+        <div class="m3" >
+            <h2>Retina ready</h2>
+            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pel lentesque sit am et tellus.</p>
+
+        </div>
+        <div class="bt-image  p-5">
+            <button class=" bt7 p-2">Discover now</button>
+        </div>
+        <div class="m4">
+            <h2>Great team</h2>
+            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pel lentesque sit am et tellus.</p>
+        </div>
+    </div>
+    <div class="container-ctd">
+
+        <div class="ctdcontent">
+            <h1>We love our customers</h1>
+            <p>Cursus, enim a ultrices venenatis, ante magna varius felis, ac sodales turpis lectus a odio. Quisque
+                facilisis lacus vitae leo tincidunt, id cursus dui blandit.</p>
+        </div>
+        <div class="class1">
+            <img class="img9" src="https://preview.colorlib.com/theme/rango/images/cta.png.webp" alt="">
+        </div>
+    </div>
+    <div class="container-bottle">
+        <div class="bottle1"data-aos="zoom-out-right">
+            <img src="https://preview.colorlib.com/theme/rango/images/line.jpg.webp" alt="">
+        </div>
+        
+        <div class="botttle-content"data-aos="fade-up">
+            <h2>We integrate the future</h2>
+            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pelle ntesque sit am et tellus blandit. Etiam
+                nec odio vestibul. Etiam nec odio vestibulum est mattis effic iturut.</p>
+                <button class="bt9 p-3">Discover Now</button>
+        </div>
+    </div>
+    <div class="container-subscribe">
+        <h1>Subscribe to our newsletter</h1>
+        <p>Cursus, enim a ultrices venenatis, ante magna varius.</p>
+        <input type="text" placeholder="Your e-mail Adress Here">
+        <span><button class="  ">Subscribe</button></span>
+    </div>
+    <footer class="footer1-container-fluid ">
+        <div class="ran fs-1 mt-4 ">
+            <a class="ran text-primary fw-light" href="">Ran</a><span class="text-warning fw-bold">Go</span><br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae enim enim. Sed nec dignissim purus.</p>
+    
+            <a href="#" class="btn btn-outline-secondary btn-floating m-1" role="button">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="btn btn-outline-secondary btn-floating m-1" role="button">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="btn btn-outline-secondary btn-floating m-1" role="button">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="btn btn-outline-secondary btn-floating m-1" role="button">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <br>
+            <h6 class="mt-4">Copyright ©2024 All rights reserved | This template is made with by Colorlib</h6>
+        </div>
+        <div class="ser mt-4 pb-">
+            <h5>Services</h5>
+            <h6 class="text-primary-emphasis mb-3">Social Media</h6>
+            <h6 class="text-primary-emphasis mb-3">Managment</h6>
+            <h6 class="text-primary-emphasis mb-3">Branding</h6>
+            <br>
+            <h5>Additional</h5>
+            <h6 class="text-primary-emphasis mb-3">Social Media</h6>
+            <h6 class="text-primary-emphasis mb-3">Managment</h6>
+            <h6 class="text-primary-emphasis mb-3">Branding</h6>
+        </div>
+        <div class="menu mt-4">
+            <h5>Menu</h5>
+            <h6 class="text-primary-emphasis mb-3">Home</h6>
+            <h6 class="text-primary-emphasis mb-3">About</h6>
+            <h6 class="text-primary-emphasis mb-3">Services</h6>
+            <h6 class="text-primary-emphasis mb-3">Blog</h6>
+            <h6 class="text-primary-emphasis mb-3">Project</h6>
+            <h6 class="text-primary-emphasis mb-3">Contact</h6>
+        </div>
+        <div class="about mt-4">
+            <h5>About</h5>
+            <h6 class="text-primary-emphasis mb-3">The Team</h6>
+            <h6 class="text-primary-emphasis mb-3">History</h6>
+            <h6 class="text-primary-emphasis mb-3">Company</h6>
+            <h6 class="text-primary-emphasis mb-3">Support</h6>
+        </div>
+        <div class="comm mt-4">
+            <h5>Community</h5>
+            <h6 class="text-primary-emphasis mb-3">Blog</h6>
+            <h6 class="text-primary-emphasis mb-3">Forums</h6>
+            <h6 class="text-primary-emphasis mb-3">Q&A</h6>
+            <h6 class="text-primary-emphasis mb-3">Purposes</h6>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+          duration: 1000,  /* Animation duration in milliseconds */
+          easing: 'ease-in-out',  /* Animation easing */
+          once: true, /* Run animation only once */
+        });
+      </script>
+</body>
+
+</html>
